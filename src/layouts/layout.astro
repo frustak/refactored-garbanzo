@@ -1,0 +1,22 @@
+---
+import "@fontsource/anton";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <a
+      href="/"
+      class="fixed top-2 left-1/2 bg-white z-50 text-xs -translate-x-1/2 rounded-full px-2 py-0.5 uppercase font-black text-stone-800 hover:text-white hover:bg-stone-800 transition duration-200"
+    >
+      home
+    </a>
+    <slot />
+  </body>
+</html>

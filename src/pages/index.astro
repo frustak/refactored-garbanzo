@@ -1,16 +1,13 @@
 ---
-import AboutDirectors from "../components/buzzworthystudio/about-directors.vue";
+import Layout from "../layouts/layout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <AboutDirectors client:only="vue" />
-  </body>
-</html>
+<Layout>
+  <main class="mt-16 px-10">
+    <div class="max-w-prose mx-auto">
+      <a href="/components/1" class="text-lg font-medium hover:underline">
+        Component - 1
+      </a>
+    </div>
+  </main>
+</Layout>

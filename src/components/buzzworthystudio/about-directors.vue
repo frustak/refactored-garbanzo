@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "@fontsource/anton";
 import { PhArrowUpRight } from "@phosphor-icons/vue";
 import gsap from "gsap";
 import _ from "lodash";
