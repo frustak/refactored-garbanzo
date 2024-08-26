@@ -2,28 +2,28 @@
 import "@fontsource/anton";
 import { PhArrowUpRight } from "@phosphor-icons/vue";
 import gsap from "gsap";
-import { ref } from "vue";
+import _ from "lodash";
 
 const names = [
   "Calvin",
-  "Rhea",
+  "Douglass",
   "Janell",
   "Gail",
   "Eddie",
   "Trisha",
   "Beatrice",
-  "Douglass",
+  "Rhea",
   "Wilbur",
   "Phillip",
   "Willa",
 ];
 
-const people = names.map((name, index) => ({
-  name,
-  image: `/images/portraits/${index + 1}.jpg`,
-}));
-
-const circleLink = ref<HTMLDivElement>();
+const people = _.shuffle(
+  names.map((name, index) => ({
+    name,
+    image: `/images/portraits/${index + 1}.jpg`,
+  })),
+);
 
 function changeHeading(name: string) {
   gsap.to("#heading > span", {
@@ -77,15 +77,12 @@ function resetHeading(name: string) {
 }
 
 function moveCircleLink(event: MouseEvent) {
-  if (!circleLink.value) return;
-  circleLink.value?.animate(
-    [{ translate: `${event.clientX}px ${event.clientY}px` }],
-    {
-      duration: 500,
-      fill: "forwards",
-      easing: "ease-out",
-    },
-  );
+  const element = document.getElementById("circle-link");
+  element?.animate([{ translate: `${event.clientX}px ${event.clientY}px` }], {
+    duration: 500,
+    fill: "forwards",
+    easing: "ease-out",
+  });
 }
 </script>
 
@@ -108,15 +105,15 @@ function moveCircleLink(event: MouseEvent) {
       </div>
 
       <div
+        id="circle-link"
         class="w-[9vw] h-[9vw] bg-red-500 rounded-full flex justify-center items-center text-white absolute top-0 left-0 scale-0 peer-hover:scale-100 transition duration-300 pointer-events-none z-10"
-        ref="circleLink"
       >
         <PhArrowUpRight :size="24" weight="bold" />
       </div>
     </div>
 
     <div
-      class="uppercase text-[16vw] font-black font-anton group overflow-hidden leading-tight relative text-center"
+      class="uppercase text-[16vw] font-black font-anton group overflow-hidden leading-tight relative text-center w-full"
     >
       <h1 id="heading" class="text-white">
         <span class="inline-block" v-for="letter in 'People'.split('')">
