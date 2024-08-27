@@ -1,13 +1,22 @@
 ---
 import Layout from "../layouts/layout.astro";
+
+const pages = new Array(2).fill(null).map((_, index) => index + 1);
 ---
 
 <Layout>
   <main class="mt-16 px-10">
-    <div class="max-w-prose mx-auto">
-      <a href="/components/1" class="text-lg font-medium hover:underline">
-        Component - 1
-      </a>
+    <div class="max-w-prose mx-auto flex flex-col gap-4 items-start">
+      {
+        pages.map((page) => (
+          <a
+            href={`/components/${page}`}
+            class="text-lg font-medium hover:underline"
+          >
+            Component - {page}
+          </a>
+        ))
+      }
     </div>
   </main>
 </Layout>
